@@ -1,0 +1,95 @@
+.login
+{
+    background: var(--clr-white);
+    padding: var(--pd-xl);
+    min-height: 75vh;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* .login h3
+{
+    color: #434343;
+    letter-spacing: var(--ls-xs);
+    text-align: center;
+    padding-bottom: var(--pd-s);
+} */
+
+.login-center
+{
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-center form
+{
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 0 2px 1px var(--clr-form-boxShadow);
+    padding: var(--pd-m);
+    position: absolute;
+    top: 20vh;
+}
+
+.login-center form p
+{
+    color: var(--clr-form-p);
+    text-align: center;
+    letter-spacing: var(--ls-xs);
+    margin-bottom: var(--mg-s);
+}
+
+.login-center form label
+{
+    color: var(--clr-form-label);
+    letter-spacing: var(--ls-s);
+    margin-bottom: var(--mg-s);
+}
+
+.login-center form input
+{
+    padding: var(--pd-s);
+    border: 1px solid var(--clr-form-border);
+    outline: none;
+}
+
+.login-center form input:nth-of-type(1)
+{
+    margin-bottom: var(--mg-s);
+}
+.login-center form input:nth-of-type(2)
+{
+    margin-bottom: var(--mg-s);
+}
+.login-center form input:nth-of-type(1)
+{
+    margin-bottom: var(--mg-s);
+}
+
+.login-center .loginBtn
+{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.login-center button
+{
+    font-size: var(--fz-regular);
+    letter-spacing: var(--ls-xs);
+    width: 160px;
+    color: var(--clr-white);
+    background: var(--clr-button-login);
+    margin-top: var(--mg-m);
+    margin-left: var(--mg-xs);
+    margin-right: var(--mg-xs);
+    padding: var(--pd-xs);
+    outline: none;
+    border: none;
+    cursor: pointer;
+}
+
+.login-center button:hover
+{
+    background: var(--clr-button-hover);
+}

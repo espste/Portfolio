@@ -1,0 +1,33 @@
+.experience-center
+{
+    margin-top: var(--mg-l);
+    margin-bottom: 10vh;
+}
+
+.single-experience
+{
+    background: var(--clr-exp-bg);
+    margin-bottom: var(--mg-l);
+    width: 100%;
+    font-size: var(--fz-paragraph);
+    color: whitesmoke;
+    padding: var(--pd-xs) var(--pd-s);
+    letter-spacing: var(--ls-xs);
+}
+
+@media screen and (min-width: 860px) {
+    .experience-center
+    {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .single-experience
+    {
+        flex: 0 0 calc(50% - var(--mg-l));
+        margin-right: 0;
+        margin-left: 0;
+        padding: var(--pd-s);
+    }
+}

@@ -1,0 +1,186 @@
+.hero
+{
+    width: 100%;
+    height: 100vh;
+    max-width: 100vw;
+    margin: 0 auto;
+    position: relative;
+}
+
+.particle
+{
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+#tsparticles {
+    position: fixed;
+    height: 100vh;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.fullName
+{
+    position: absolute;
+    text-align: center;
+    margin-top: 20vh;
+    left: 25%;
+    width: 250px;
+    transform: translate(-50%, -50%);
+}
+
+.fullName h1
+{
+    color: var(--clr-form-bg);
+    letter-spacing: var(--ls-xs);
+    font-style: var(--fs-italic);
+    text-shadow: 
+        1px 1px 2px black, 
+        0 0 1em rgb(142, 212, 240), 
+        0 0 0.2em rgb(17,17,17)
+    ;
+}
+
+.cv
+{
+    position: absolute;
+    top: 3rem;
+    right: 1.5rem;
+    z-index: 1;
+}
+
+.cv span b
+{
+    font-size: var(--fz-regular);
+    text-transform: capitalize;
+    color: var(--clr-greyish);
+    letter-spacing: var(--ls-xs);
+    font-style: var(--fs-italic);
+}
+
+.cv span .fa-file-pdf
+{
+    color: #fff;
+    font-size: var(--fz-regular);
+    background-color: var(--clr-button-delete);
+    border-radius: var(--br-l);
+    transition: all .2s ease-in-out;
+}
+
+.cv:hover .fa-file-pdf
+{
+    transform: scale(1.2);
+}
+
+.personalInfo
+{
+    position: relative;
+    box-shadow: 1px 1px 4px 3px rgba(197, 196, 197, .497);    
+    max-width: 550px;
+    height: 300px;
+    margin: 0 auto;
+    top: 50%;
+    padding: var(--pd-s);
+    display: flex;
+    flex-direction: column;
+    transition: all .3s ease-in-out;
+}
+
+.personalInfo-details
+{  
+    flex: 0 0 calc(68% - 10px);
+    margin: 2vw;
+}
+
+.personalInfo-details .info
+{
+    font-size: var(--fz-regular);
+    width: 20vw;
+    border: 1px solid var(--clr-greyish);
+    padding: var(--pd-xs);
+    letter-spacing: var(--ls-xs);
+    margin-bottom: 2vh;
+}
+
+.personalInfo-details .info label
+{
+    text-decoration: underline;
+    color: var(--clr-white);
+    margin-left: var(--mg-xs);
+}
+
+.personalInfo-details .info h4
+{
+    font-style: var(--fs-italic);
+    color: var(--clr-pi-h4);
+    margin-top: var(--mg-xs);
+    margin-bottom: var(--mg-m);
+    margin-left: var(--mg-xs);
+}
+
+.personalInfo-img
+{
+    display: block;
+    position: absolute;
+    right: 0;
+    align-self: right;
+    margin: 2vw;
+}
+
+.personalInfo-img img
+{
+    width: 170px;
+    object-fit: cover;
+    height: 230px;
+    border-radius: var(--br-s);
+    border: 1px solid var(--clr-greyish);
+    padding: var(--pd-xs);
+    top: .2rem;
+    position: relative;
+}
+
+/* @media screen and (min-width: 664px) {
+    .fullName
+    {
+        top: 4rem;
+        width: 300px;
+    }
+
+    .personalInfo
+    {
+        max-width: 460px;
+        width: 100%;
+        margin: 0 auto;
+        /* margin-top: -100px; */
+    /* } */
+
+    /* .personalInfo-details
+    {
+        flex: 0 0 calc(64% - 10px);
+    }
+
+    .personalInfo-img
+    {
+        flex: 0 0 calc(36% - 10px);
+        display: block;
+        align-self: center;
+    } */
+/* } */ 
+
+@media screen and (min-width: 960px) { 
+    .fullName h1
+    {
+        font-size: var(--fz-h1);
+    }
+
+    .personalInfo
+    {
+        position: relative;
+    }
+}

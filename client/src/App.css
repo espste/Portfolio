@@ -1,0 +1,108 @@
+* 
+{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Raleway', sans-serif;
+}
+
+:root
+{
+    /***** COLORS *****/
+    --clr-white: #fff;
+    --clr-dark: black;
+    --clr-greyish: #d3d3d3;
+
+    --clr-primary: ;
+    --clr-secondary: ;
+    --clr-cta: ;
+    --clr-bg: rgb(9, 93, 119);
+    --clr-border: rgb(168, 168, 168);
+    
+    --clr-admin: rgb(93, 241, 93);
+    --clr-admin-title: #555;
+    --clr-admin-form-label: #424242;
+
+    --clr-edu-bg: rgb(17, 115, 145);
+    --clr-exp-bg: rgb(192, 192, 192);
+    
+    --clr-pi-h4: rgb(236, 235, 235);
+
+    --clr-button-hover: dodgerblue;
+    --clr-button-login: rgb(19, 126, 233);
+    --clr-button-cancel: crimson;
+    --clr-button-cancel-hover: rgb(239, 55, 92);
+    --clr-button-form: rgb(230, 227, 227);
+    --clr-button-delete: crimson;
+
+    --clr-links: rgb(192, 190, 190);
+    --clr-link-hover: rgb(255, 255, 255);
+    
+    --clr-form-boxShadow: rgb(11,72,92); 
+    --clr-form-p: crimson;
+    --clr-form-label: #555;
+    --clr-form-h4: #555;
+    --clr-form-border: rgb(40,185,185);
+    --clr-form-bg: rgb(241, 241, 241);
+
+    --clr-icons-trash: crimson;
+    --clr-icons-edit: green;
+
+    /***** FONT SIZE *****/
+    --fz-regular: 1rem;
+    --fz-h1: 2.5rem;
+    --fz-p: 1.1rem;
+    --fz-links: 1.1rem;
+    --fz-icons: 1.2rem;
+
+    /***** FONT STYLE *****/
+    --fs-italic: italic;
+    --fs-bold: bold;
+
+    /***** MARGIN *****/
+    --mg-xs: .3rem; 
+    --mg-s: .6rem;
+    --mg-m: .9rem;
+    --mg-l: 1.25rem;
+    --mg-xl: 1.5rem;
+    --mg-xxl: 1.875rem;
+    
+    /***** PADDING *****/
+    --pd-xs: .3rem;
+    --pd-s: .6rem;
+    --pd-m: 1.25rem;
+    --pd-l: 1.5rem;
+    --pd-xl: 2.5rem;
+
+    /***** LETTER SPACING *****/
+    --ls-xs: .1rem;
+    --ls-s: .2rem;
+    
+    /***** BORDER RADIUS *****/
+    --br-s: .3rem;
+    --br-l: 1.25rem; 
+}
+
+li
+{
+    list-style: none;
+}
+
+a
+{
+    text-decoration: none;
+}
+
+.main-container,
+.contact,
+.main-title
+{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 0 var(--ps-s);
+}
+
+.title
+{
+    text-transform: capitalize;
+}

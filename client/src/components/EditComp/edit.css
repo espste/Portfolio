@@ -1,0 +1,82 @@
+
+.edit
+{
+    min-height: 100vh;
+    margin-bottom: var(--mg-l);
+}
+
+.edit .same-component
+{
+    display: block;
+    max-width: 400px;
+    margin: 0 auto;
+    margin-top: 3.125rem;
+}
+
+.edit .same-form .btns
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--mg-l);
+}
+
+.cancel-btn
+{
+    background: var(--clr-button-cancel);
+}
+
+.cancel-btn:hover
+{
+    background: var(--clr-button-cancel-hover);
+}
+
+.updated
+{
+    color: green;
+    text-align: center;
+    font-style: var(--fs-italic);
+    font-weight: 400;
+    letter-spacing: var(--ls-xs);
+}
+
+.new-updated
+{
+    display: block;
+}
+
+/* UPLOAD FORM */
+
+.edit .upload
+{
+    display: flex;
+    justify-content: space-between;
+    margin-top: var(--mg-l);
+    position: relative;
+}
+
+.edit .upload input
+{
+    width: 200px;
+    align-self: flex-start;
+}
+
+.edit #file_img
+{
+    width: 100px;
+    position: relative;
+    height: 45px;
+    margin-right: var(--mg-s);
+}
+
+.edit .upload img
+{
+    width: 100px;
+    height: 70px;
+    display: block;
+    margin-top: -1rem;
+}
+
+.edit .upload span
+{
+    margin-top: -1rem;
+}

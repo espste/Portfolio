@@ -1,0 +1,27 @@
+.title
+{
+    color: var(--clr-bg);
+    font-style: var(--fs-italic);
+    letter-spacing: var(--ls-xs);
+    border-bottom: 1px dashed rgb(9, 93, 119);
+    margin: 0 auto;
+    margin-bottom: var(--mg-l);
+}
+
+.about
+{    
+margin-bottom: var(--mg-l);
+color: var(--clr-greyish);
+}
+
+.about-center
+{
+    margin-bottom: 10vh;
+}
+
+.about-info p   
+{
+font-size: var(--fz-p);
+color: var(--clr-greyish);
+line-height: 1.5;
+}

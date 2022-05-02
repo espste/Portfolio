@@ -1,0 +1,39 @@
+.education
+{
+    margin: var(--mg-l) 0;
+}
+
+.education-center
+{
+    margin-bottom: 10vh;
+}
+
+.single-education
+{
+    font-size: var(--fz-p);
+    color: var(--clr-white);
+    padding: var(--pd-xs) var(--pd-s);
+    letter-spacing: var(--ls-xs);
+    background: var(--clr-edu-bg);
+    margin: 0 auto;
+    margin-bottom: var(--mg-l);
+    width: 100%;
+}
+
+@media screen and (min-width: 860px) {
+    .education-center
+    {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .single-education
+    {
+        flex: 0 0 calc(50% - 11.25rem);
+        margin-right: 0;
+        margin-left: 0;
+        padding: var(--pd-s);
+        clip-path: polygon(0 0, 100% 0, 95% 100%, 0% 100%);
+    }
+}
