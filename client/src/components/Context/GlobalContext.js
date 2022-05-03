@@ -26,14 +26,10 @@ export const DataProvider = ({props, children}) => {
         } catch (err) {
             console.log(err);            
         }
-
-
     }, []);
 
-    
-
     return (
-        <DataContext.Provider value={about}>
+        <DataContext.Provider value={state}>
             {children}
         </DataContext.Provider>
     )

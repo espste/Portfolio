@@ -136,6 +136,7 @@ form button:hover
 .fa-edit:hover
 {
     opacity: .7;
+    cursor: pointer;
 }
 
 .same-component
@@ -158,7 +159,7 @@ form button:hover
 
     .same-item
     {
-        flex: 1;
+        flex: auto;
         margin: 0;
         margin-left: var(--mg-xxl);
     }

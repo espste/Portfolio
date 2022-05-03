@@ -5,7 +5,7 @@ import { DataContext } from '../../components/Context/GlobalContext';
 
 const About = () => {
   const state = useContext(DataContext);
-  // const [about] = state.about;
+  const about = state.about;
 
   return (
     <div className="main-container">
@@ -14,10 +14,14 @@ const About = () => {
             about
           </h2>
         </div>
-
-        <div className="about-info">
-          <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur deserunt quis consectetur, nemo voluptate odit totam ipsum repellat veritatis magnam consequatur, earum quaerat. Natus autem laborum voluptas! Dignissimos, reiciendis illum?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur deserunt quis consectetur, nemo voluptate odit totam ipsum repellat veritatis magnam consequatur, earum quaerat. Natus autem laborum voluptas! Dignissimos, reiciendis illum?Lorem ipsum dolor sit, amet consectetur adipisicing elit. Consequuntur deserunt quis consectetur, nemo voluptate odit totam ipsum repellat veritatis magnam consequatur, earum quaerat. Natus autem laborum voluptas! Dignissimos, reiciendis illum?</p>
-        </div>
+        
+        {about.map(item => {
+          return (
+            <div className="about-info" key={item._id}>
+              <p>{item.about}</p>
+            </div>
+          )
+        })}
     </div>
   )
 }

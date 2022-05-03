@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 export const aboutSchema = new mongoose.Schema({
     about: {
         type: 'String',
+        required: true
     },
 });
 

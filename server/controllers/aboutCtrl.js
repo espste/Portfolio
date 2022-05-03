@@ -48,7 +48,7 @@ export const updatedAbout = async (req, res) => {
 
         let results = await AboutModel.save();
         await results;
-        res.json({msg: 'About Updated..'})
+        res.json({msg: 'Updated'})
 
     } catch(error) {
         res.status(500).json({msg: 'Something went wrong..'});
@@ -59,6 +59,6 @@ export const updatedAbout = async (req, res) => {
 export const delAbout = async (req, res) => {
     const about = await AboutModel.findByIdAndDelete(req.params.id);
     about;
-    res.json({msg: 'About Deleted..'})
+    res.json({msg: 'Deleted'})
 };
 

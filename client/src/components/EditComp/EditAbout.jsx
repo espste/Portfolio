@@ -1,21 +1,67 @@
 import './edit.css';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import axios from 'axios';
 
-const EditAbout = () => {
+
+const EditAbout = (props) => {
+  const [about, setAbout] = useState('');
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
+  const {id} = useParams();
+
+  //getting by id
+  useEffect(() => {
+    
+    axios.get(`/about/${id}`)
+      .then(res => {
+        setAbout(res.data.about)
+      })
+      .catch(err => console.log(err))
+  },[id]);
+
+  //updating about
+  const updateAbout = (e) => {
+    e.preventDefault();
+    const postAbout = {
+      about
+    };
+
+    axios.put(`/about/update/${props.match.params.id}`, postAbout)
+      .then(res => {
+        setMessage(res.data.msg);
+      })
+      .catch(err => console.log(err))
+
+      setAbout();
+
+      const timeout = setTimeout(() => {
+        navigate('/admin');
+      }, 1000) 
+
+      return () => clearTimeout(timeout);
+  };
+
+  const handleAboutChange = e => {
+    setAbout(e.target.value);
+  };
+
+
   return (
     <div className="edit">
       <div className="main-container">
         <div className="same-component">
           <div className="same-form">
-            <form>
-              <h3 className="updated">Edit</h3>
+            <form onSubmit={updateAbout}>
+              <h3 className="updated">{message}</h3>
               <label htmlFor="text">About</label>
               <textarea
                 name="textarea"
-                id=""
                 cols="30"
                 rows="3"
-              ></textarea>
+                value={about}
+                onChange={handleAboutChange}
+              />
 
               <div className="btns">
                 <button type="submit">Update</button>

@@ -11,7 +11,6 @@ import {
 
 const Router = express.Router();
 
-//ABOUT ROUTES
 //get 
 Router.get('/about', getAbout);
 
