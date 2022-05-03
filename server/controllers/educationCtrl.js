@@ -57,5 +57,5 @@ export const updatedEducation = async (req, res) => {
 export const delEducation = async (req, res) => {
     const education = await EducationModel.findByIdAndDelete(req.params.id);
     education;
-    res.json({msg: 'Education Deleted..'})
+    res.json({msg: 'Deleted..'})
 };

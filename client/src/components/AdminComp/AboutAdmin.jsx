@@ -9,30 +9,9 @@ const AboutAdmin = () => {
   const [aboutData, setAboutData] = useState([]);
   const [message, setMessage] = useState('');
   const [messageCondition, setMessageCondition] = useState(false);
-  
-  // fetching data 
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        
-        const res = await axios.get(`/about`);
-        // console.log(res.data);
-        setAboutData(res.data); 
 
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchData();
-  }, []);
-
-  const handleAboutChange = e => {
-    setAbout(e.target.value);
-    // console.log(about);
-  };
-
-  //submit new about  
-  const handleSubmit = e => {
+  //add new about  
+  const updateAbout = e => {
     e.preventDefault();
     const postAbout = {about};
     
@@ -67,11 +46,31 @@ const AboutAdmin = () => {
     setAboutData(aboutFilterDelete);
   };
 
+  const handleChange = e => {
+    setAbout(e.target.value);
+    // console.log(about);
+  };
+
+   // fetching data 
+   useEffect(() => {
+    const fetchData = async () => {
+      try {
+        
+        const res = await axios.get(`/about`);
+        // console.log(res.data);
+        setAboutData(res.data); 
+
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchData();
+  }, []);
 
   return (
     <div className='same-component'>
       <div className="same-form">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={updateAbout}>
           <h4>About Component</h4>
 
           <label htmlFor="text">About</label>
@@ -80,7 +79,7 @@ const AboutAdmin = () => {
             cols="30" 
             rows="3"
             value={about}
-            onChange={handleAboutChange}
+            onChange={handleChange}
           />
           <button type="submit">Add</button>
         </form>

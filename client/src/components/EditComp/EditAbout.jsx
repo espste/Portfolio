@@ -1,5 +1,5 @@
 import './edit.css';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
@@ -8,35 +8,31 @@ const EditAbout = (props) => {
   const [about, setAbout] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
-  const {id} = useParams();
 
   //getting by id
   useEffect(() => {
     
-    axios.get(`/about/${id}`)
+    axios.get(`/about/${props.match.params.id}`)
       .then(res => {
         setAbout(res.data.about)
-      })
-      .catch(err => console.log(err))
-  },[id]);
+      }).catch(err => console.log(err))
+  },[]);/* eslint-disable-line */
 
   //updating about
   const updateAbout = (e) => {
     e.preventDefault();
-    const postAbout = {
-      about
-    };
+    
+    const updateAbout = {about};
 
-    axios.put(`/about/update/${props.match.params.id}`, postAbout)
+    axios.put(`/about/update/${props.match.params.id}`, updateAbout)
       .then(res => {
         setMessage(res.data.msg);
-      })
-      .catch(err => console.log(err))
+      }).catch(err => console.log(err))
 
-      setAbout();
+      setAbout('');
 
       const timeout = setTimeout(() => {
-        navigate('/admin');
+        navigate("/admin");
       }, 1000) 
 
       return () => clearTimeout(timeout);

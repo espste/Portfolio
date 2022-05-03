@@ -1,6 +1,12 @@
 import './education.css';
+import { useContext } from 'react';
+import { DataContext } from '../../components/Context/GlobalContext';
 
 const Education = () => {
+  const state = useContext(DataContext);
+  const [education] = state.education;
+  // console.log(education);
+
   return (
     <div>
       <div className="main-container">
@@ -12,30 +18,15 @@ const Education = () => {
 
         <div className="education-center">
 
-          <div className="single-education">
-            <p>GK Elektro</p>
-            <h6>01/2005 - 01/2008</h6>
-            <h5>Karmsund Vidergående Skole</h5>
-          </div>
-          <div className="single-education">
-            <p>GK Elektro</p>
-            <h6>01/2005 - 01/2008</h6>
-            <h5>Karmsund Vidergående Skole</h5>
-          </div>
-          <div className="single-education">
-            <p>GK Elektro</p>
-            <h6>01/2005 - 01/2008</h6>
-            <h5>Karmsund Vidergående Skole</h5>
-          </div>
-          <div className="single-education">
-            <p>GK Elektro</p>
-            <h6>01/2005 - 01/2008</h6>
-            <h5>Karmsund Vidergående Skole</h5>
-          </div>
-         
+          {education.map(item => {
+            return (
+              <div className="single-education" key={item._id}>
+                <p>{item.education}</p>
+              </div>
+            )
+          })}
 
         </div>
-
       </div>
     </div>
   )

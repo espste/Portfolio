@@ -5,7 +5,7 @@ import { DataContext } from '../../components/Context/GlobalContext';
 
 const About = () => {
   const state = useContext(DataContext);
-  const about = state.about;
+  const [about] = state.about;
 
   return (
     <div className="main-container">
@@ -20,7 +20,7 @@ const About = () => {
             <div className="about-info" key={item._id}>
               <p>{item.about}</p>
             </div>
-          )
+          ) 
         })}
     </div>
   )

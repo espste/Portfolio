@@ -1,7 +1,25 @@
 import './edit.css';
-import { Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
-const EditEducation = () => {
+const EditEducation = (props) => {
+  const [education, setEducation] = useState([]);
+  const [educationData, setEducationData] = useState([]);
+  const [message, setMessage] = useState('');
+  const navigate = useNavigate();
+
+  //getting by id
+  useEffect(() => {
+
+    axios.get(`/education/${props.match.params.id}`)
+      .then(res => {setEducation(res.data.education)}) 
+      .catch(err => console.log(err))
+
+  }, [props.match.params.id]);
+
+
+
   return (
     <div className='edit'>
       <div className='main-container'>

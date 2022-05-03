@@ -7,7 +7,7 @@ export const getAbout = async (req, res) => {
     try {
         res.json(about);
     } catch(error) {
-        res.status(500).json({msg: 'Something went wrong..'});
+        res.status(500).json({msg: 'Server problem..'});
     }
 };
 
@@ -26,16 +26,14 @@ export const getAboutId = async (req, res) => {
 //add
 export const addAbout = async (req, res) => {
     const { about } = req.body;
-    const newAbout = new AboutModel({
-        about: about,
-    });
-
+    const newAbout = new AboutModel({about});
+    
     try {
         await newAbout.save();
-        res.send('About Inserted Successfully!');
+        res.json(newAbout);
 
     } catch(error) {
-        res.status(500).json({msg: 'Something went wrong..'});
+        res.status(500).json({msg: 'Server problem..'});
     }
 };
 
@@ -44,14 +42,14 @@ export const updatedAbout = async (req, res) => {
     const { about } = req.body;
 
     try {
-        const newAbout = await AboutModel.findByIdAndUpdate(req.params.id, {about});
+        await AboutModel.findByIdAndUpdate(req.params.id, {about});
 
         let results = await AboutModel.save();
         await results;
         res.json({msg: 'Updated'})
 
     } catch(error) {
-        res.status(500).json({msg: 'Something went wrong..'});
+        res.status(500).json({msg: error});
     }
 };
 
