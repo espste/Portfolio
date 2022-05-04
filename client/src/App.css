@@ -13,18 +13,18 @@
     --clr-dark: black;
     --clr-greyish: #d3d3d3;
 
-    --clr-primary: ;
-    --clr-secondary: ;
+    --clr-primary-text: rgb(202, 224, 255);
+    --clr-secondary: rgb(114, 141, 249);
     --clr-cta: ;
-    --clr-bg: rgb(9, 93, 119);
+    --clr-bg: rgb(30, 41, 59);
     --clr-border: rgb(168, 168, 168);
     
     --clr-admin: rgb(93, 241, 93);
     --clr-admin-title: #555;
     --clr-admin-form-label: #424242;
 
-    --clr-edu-bg: rgb(17, 115, 145);
-    --clr-exp-bg: rgb(192, 192, 192);
+    --clr-edu-bg: rgb(31, 50, 81);
+    --clr-exp-bg: rgb(31, 50, 81);
     
     --clr-pi-h4: rgb(236, 235, 235);
 
@@ -35,15 +35,14 @@
     --clr-button-form: rgb(230, 227, 227);
     --clr-button-delete: crimson;
 
-    --clr-links: rgb(192, 190, 190);
     --clr-link-hover: rgb(255, 255, 255);
-    
     --clr-form-boxShadow: rgb(11,72,92); 
-    --clr-form-p: crimson;
-    --clr-form-label: #555;
+    --clr-form-p: rgb(202, 224, 255);
+    --clr-form-label: rgb(31, 50, 81);
     --clr-form-h4: #555;
-    --clr-form-border: rgb(40,185,185);
-    --clr-form-bg: rgb(241, 241, 241);
+
+    --clr-form-border: rgb(5, 40, 98);
+    --clr-form-bg: rgb(31, 50, 81);
 
     --clr-icons-trash: crimson;
     --clr-icons-edit: green;
@@ -58,6 +57,12 @@
     /***** FONT STYLE *****/
     --fs-italic: italic;
     --fs-bold: bold;
+
+    /***** FONT STYLE *****/
+    --fw-light: 300;
+    --fw-regular: 400;
+    --fw-bold: 700;
+    --fw-black: 900;
 
     /***** MARGIN *****/
     --mg-xs: .3rem; 
@@ -98,7 +103,7 @@ a
 .main-title
 {
     max-width: 1280px;
-    margin: 0 auto;
+    margin: 0 10vw;
     padding: 0 var(--ps-s);
 }
 

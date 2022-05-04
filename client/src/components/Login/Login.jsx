@@ -25,7 +25,7 @@ const Login = () => {
 
               <div className="loginBtn">
                 <button type='submit'>Login</button>
-                <Link to="/"><button>Back to home</button></Link>
+                <Link to="/"><button>Back</button></Link>
               </div>
 
             </form>

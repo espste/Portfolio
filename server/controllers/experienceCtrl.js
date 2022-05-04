@@ -58,5 +58,5 @@ export const updatedExperience = async(req, res) => {
 export const delExperience = async(req, res) => {
     const experience = await ExperienceModel.findByIdAndDelete(req.params.id);
     experience;
-    res.json({msg: 'Experience Deleted..'})
+    res.json({msg: 'Deleted..'})
 };

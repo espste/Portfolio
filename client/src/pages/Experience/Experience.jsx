@@ -1,6 +1,13 @@
 import './experience.css';
+import { useContext } from 'react';
+import { DataContext } from '../../components/Context/GlobalContext';
+
 
 const Experience = () => {
+  const state = useContext(DataContext);
+  const [experience] = state.experience;
+  // console.log(experience);
+
   return (
     <div className='main-container'>
       <h2 className="title">
@@ -9,17 +16,11 @@ const Experience = () => {
       <div className="experience">
         <div className="experience-center">
 
-          <div className="single-experience">
-            <p>Self employeed junior web dev</p>
-          </div>
-
-          <div className="single-experience">
-            <p>Self employeed junior web dev</p>
-          </div>
-
-          <div className="single-experience">
-            <p>Self employeed junior web dev</p>
-          </div>
+          {experience.map(item => (
+            <div className="single-experience" key={item._id}>
+              <p>{item.experience}</p>
+            </div>
+          ))}
 
         </div>
       </div>

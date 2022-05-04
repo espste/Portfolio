@@ -1,7 +1,6 @@
 import express from "express";
 import cloudinary from 'cloudinary';
 import fs from 'fs';
-import path from 'path';
 
 //////////      //////////
 //                      //
@@ -16,16 +15,17 @@ const Router = express.Router();
 cloudinary.config({
     cloud_name: process.env.CLOUD_NAME,
     api_key: process.env.CLOUD_KEY,
-    api_secret: process.env.CLOUD_SEC,
-    secure: true
+    api_secret: process.env.CLOUD_SEC
 });
 
 //upload image
 Router.post('/upload', (req, res)=>{
     try {
+        console.log(req.files);
 
-        if(!req.files || Object.keys(req.files).length===0)
+        if(!req.files || Object.keys(req.files).length===0) {
             return res.status(400).send({Message: 'Add file to upload..'});
+        }
        
         const file = req.files.file;
         if(file.size > 1024*1024) {
@@ -54,11 +54,6 @@ Router.post('/upload', (req, res)=>{
                 });
             }
         );
-
-        // cloudinary.v2.uploader.upload("https://upload.wikimedia.org/wikipedia/commons/a/ae/Olympic_flag.jpg",
-        //     { public_id: "olympic_flag" }, 
-        //     function(error, result) {console.log(result); });
-       
     } catch (err) {
       res.status(500).json({Message: err.message});  
     }
@@ -66,7 +61,7 @@ Router.post('/upload', (req, res)=>{
 
 //delete image
 Router.post('/destroy', (req, res) => {
-    const public_id = req.body;
+    const {public_id} = req.body;
     
     try {
         if(!public_id) {

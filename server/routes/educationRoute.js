@@ -10,20 +10,19 @@ import {
 
 const Router = express.Router();
 
-// EDUCATION ROUTES
-//get education
+//get 
 Router.get('/education', getEducation);
 
-//get education by id
+//get by id
 Router.get('/education/:id', getEducationId);
 
-//post education
+//post 
 Router.post('/education/', addEducation);
 
-//update education by id
+//update by id
 Router.put('/education/update/:id', updatedEducation);
 
-//delete education by id
+//delete by id
 Router.delete('/education/:id', delEducation);
 
 export default Router;

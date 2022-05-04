@@ -117,7 +117,7 @@ nav
 .links li a
 {
     font-size: var(--fz-links);
-    color: var(--clr-links);
+    color: var(--clr-primary-text);
     padding: var(--pd-s);
     display: block;
     transition: all .3s ease-in-out;

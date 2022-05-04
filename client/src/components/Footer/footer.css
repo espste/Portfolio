@@ -38,7 +38,7 @@
 .contact-links li a
 {
     margin: 0 var(--mg-xs);
-    color: var(--clr-links);
+    color: var(--clr-primary-text);
     font-size: var(--fz-links);
     display: inline-block;
     padding: 0 2px;
@@ -57,7 +57,7 @@
 
 .contact-socialMedia li a
 {
-    color: var(--clr-links);
+    color: var(--clr-primary-text);
     margin: 0 var(--mg-xs);
     padding: var(--pd-xs);
     font-size: var(--fz-p);
@@ -71,7 +71,7 @@
 .contact-socialMedia li a i
 {
     font-size: var(--fz-links);
-    color:var(--clr-links);
+    color:var(--clr-primary-text);
     margin: 0 var(--mg-xs);
 }
 

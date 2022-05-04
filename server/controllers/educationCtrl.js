@@ -12,12 +12,13 @@ export const getEducation = async (req, res) => {
     }
 };
 
-//get Education by id
+//get by id
 export const getEducationId = async (req, res) => {
     
     try {
         const education = await EducationModel.findById(req.params.id);
         res.json(education);
+        console.log(req.params.id);
 
     } catch(err) {
         res.status(500).json({msg: 'Something went wrong..'});
@@ -31,9 +32,9 @@ export const addEducation = async(req, res) => {
 
     try {
         await newEducation.save();
-        res.send('Education Inserted Successfully');
+        res.json(newEducation);
     } catch(error) {
-        res.status(500).json({msg: 'Something went wrong..'})
+        res.status(500).json({msg: 'Server problem..'})
     }
 };
 
@@ -41,12 +42,13 @@ export const addEducation = async(req, res) => {
 export const updatedEducation = async (req, res) => {
     const { education } = req.body;
 
+
     try {
-        const newEducation = await EducationModel.findByIdAndUpdate(req.params.id, {education});
+        await EducationModel.findByIdAndUpdate(req.params.id, {education});
 
         let results = await EducationModel.save();
         await results;
-        res.json({msg: 'Education Updated..'})
+        res.json({msg: 'Updated..'})
 
     } catch(error) {
         res.status(500).json({msg: 'Something went wrong..'});
@@ -55,7 +57,7 @@ export const updatedEducation = async (req, res) => {
 
 //delete Education by id
 export const delEducation = async (req, res) => {
-    const education = await EducationModel.findByIdAndDelete(req.params.id);
+    const education = await EducationModel.findOne({_id: req.params.id});
     education;
     res.json({msg: 'Deleted..'})
 };

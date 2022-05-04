@@ -21,7 +21,7 @@ import EditEducation from './components/EditComp/EditEducation'
 import EditExperience from './components/EditComp/EditExperience'
 import EditProjects from './components/EditComp/EditProjects'
 
-const App = () => {
+const App = (props) => {
 
   return (
     <div className="App">

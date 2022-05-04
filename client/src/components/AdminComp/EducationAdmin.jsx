@@ -1,7 +1,7 @@
 import './admin.css';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
-import { useState, useEffect } from 'react';
 
 const EducationAdmin = () => {
   const [education, setEducation] = useState([]);
@@ -15,14 +15,13 @@ const EducationAdmin = () => {
     e.preventDefault();
     const postEducation = {education};
 
-    setEducation('');
+    setEducation();
 
-    axios.post(`/education`, postEducation)
+    axios.post(`/education/`, postEducation)
       .then(res => console.log('Added new Education..'))
       .catch(err => console.log(err));
 
       setEducationData([...educationData, postEducation]);
-
   };
 
 
@@ -33,8 +32,8 @@ const EducationAdmin = () => {
     axios.delete(`/education/${id}`)
       .then(res => {
         setMessageCondition(true);
-        console.log(`${res.data.msg}`)
         setMessage(`${res.data.msg}`);
+        // console.log(`${res.data.msg}`)
 
         const timeout = setTimeout(() => {
           setMessageCondition(false);
@@ -65,7 +64,7 @@ const EducationAdmin = () => {
       }
     }
     fetchData();
-  }, [education])
+  }, [])
   
 
 
@@ -75,7 +74,11 @@ const EducationAdmin = () => {
         <form onSubmit={postEducation}>
           <h4>Education Component</h4>
           <label htmlFor="text">Education</label>
-          <input type="text" value={education} onChange={handleChange}/>
+          <input 
+            type="text" 
+            value={education} 
+            onChange={handleChange}
+          />
           <button type="submit">Add</button>
         </form>
       </div>

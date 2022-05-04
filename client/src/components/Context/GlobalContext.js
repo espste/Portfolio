@@ -7,10 +7,14 @@ export const DataContext = createContext();
 export const DataProvider = ({ children }) => {
     const [about, setAbout] = useState([]);
     const [education, setEducation] = useState([]);
+    const [experience, setExperience] = useState([]);
+    const [projects, setProjects] = useState([]);
 
     const state = {
         about: [about, setAbout],
-        education: [education, setEducation]
+        education: [education, setEducation],
+        experience: [experience, setExperience],
+        projects: [projects, setProjects]
     };
 
     //fetching data from routes
@@ -25,13 +29,22 @@ export const DataProvider = ({ children }) => {
         const res2 = await axios.get(`/education`);
         // console.log(res2);
         setEducation(res2.data);
+        
+        //fetching experience
+        const res3 = await axios.get(`/experience`);
+        // console.log(res3);
+        setExperience(res3.data);
+
+        //fetching projects
+        const res4 = await axios.get(`/project`);
+        // console.log(res4);
+        setProjects(res4.data);
+
     };
 
     useEffect(() => {
         try {
-            
             fetchData();
-
         } catch (err) {
             console.log(err);            
         }

@@ -37,7 +37,7 @@
 
 .fullName h1
 {
-    color: var(--clr-form-bg);
+    color: var(--clr-primary-text);
     letter-spacing: var(--ls-xs);
     font-style: var(--fs-italic);
     text-shadow: 
@@ -59,7 +59,7 @@
 {
     font-size: var(--fz-regular);
     text-transform: capitalize;
-    color: var(--clr-greyish);
+    color: var(--clr-primary-text);
     letter-spacing: var(--ls-xs);
     font-style: var(--fs-italic);
 }

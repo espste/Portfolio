@@ -11,7 +11,7 @@
 .single-education
 {
     font-size: var(--fz-p);
-    color: var(--clr-white);
+    color: var(--clr-primary-text);
     padding: var(--pd-xs) var(--pd-s);
     letter-spacing: var(--ls-xs);
     background: var(--clr-edu-bg);

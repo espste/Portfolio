@@ -90,7 +90,7 @@ const AboutAdmin = () => {
         {aboutData.map((item) => {
           return (
             <div className="about-info" key={item._id}>
-              <div className="icons">
+              <div className="icons" key={item._id}>
                 <Link to={`/edit/${item._id}`}><i className="fas fa-edit"></i></Link>
                 <i 
                   className="fas fa-trash"

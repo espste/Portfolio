@@ -3,8 +3,10 @@ import fileUpload from 'express-fileupload';
 import mongoose from "mongoose";
 import cors from 'cors';
 import helmet from "helmet";
+import path from "path";
+import { dirname } from 'path';
+import { fileURLToPath } from "url";
 import dotenv from 'dotenv';
-import path from 'path';
 dotenv.config();
 
 import contactRoute from './routes/contactRoute.js';
@@ -17,6 +19,9 @@ import upload from './routes/upload.js';
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = dirname(__filename);
 
 //middleware
 app.use(express.json());
@@ -52,7 +57,7 @@ app.use('/', upload);
 //static assets
 if(process.env.NODE_ENV === 'production') {
     app.use(express.static('client/build'));
-    app.get('*', (req, res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
+    app.get('*', (res) => res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html')));
 };
 
 

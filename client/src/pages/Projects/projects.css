@@ -40,14 +40,17 @@
 {
     letter-spacing: var(--ls-xs);
     margin-bottom: var(--mg-xs);
-    color: var(--clr-bg);
+    color: var(--clr-secondary);
+    font-weight: var(--fw-bold);
     text-transform: capitalize;
+    text-decoration: underline;
 }
 
 .single-project-info p
 {
     font-size: var(--fz-p);
-    color: var(--clr-greyish);
+    font-weight: var(--fw-ligth);
+    color: var(--clr-primary-text);
 }
 
 @media screen and (min-width: 664px) {

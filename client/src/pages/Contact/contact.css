@@ -15,7 +15,8 @@ button .load img
     flex-wrap: wrap;
     flex-direction: column-reverse;
     padding: var(--pd-s);
-    margin-bottom: 10vh;
+    margin: 10vh 0;
+
 }
 
 .contact-info
@@ -26,7 +27,7 @@ button .load img
 
 .contact-info h4
 {
-    color: var(--clr-greyish);
+    color: var(--clr-primary-text);
     letter-spacing: var(--ls-s);
     font-style: var(--fs-italic);
     margin-bottom: var(--mg-xs);

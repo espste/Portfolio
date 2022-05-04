@@ -73,7 +73,7 @@ Router.delete('/project/:id', async(req, res) => {
     let project = await ProjectModel.findByIdAndDelete(req.params.id);
     try {
         await project;
-        res.json({msg: "Project Deleted"});
+        res.json({msg: "Deleted"});
     } catch (err) {
         res.json({msg: err});
     }

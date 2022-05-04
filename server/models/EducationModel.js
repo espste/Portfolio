@@ -2,8 +2,10 @@ import mongoose from 'mongoose';
 
 
 export const educationSchema = new mongoose.Schema({
+
     education: {
         type: 'String',
+        required: true  
     },
 });
 
