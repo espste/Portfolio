@@ -79,10 +79,15 @@
 {
     font-size: .75rem;
     font-style: italic;
-    color: var(--clr-greyish);
+    color: var(--clr-primary-text);
     text-align: center;
     border-top: 1px solid var(--clr-border);
     padding: var(--pd-s) 0;
+}
+
+.fab
+{
+    color: red;
 }
 
 @media screen and (min-width: 530px) {

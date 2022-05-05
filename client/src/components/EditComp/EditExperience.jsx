@@ -1,20 +1,22 @@
 import './edit.css';
 import { useState, useEffect } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import axios from 'axios';
 
-const EditExperience = (props) => {
 
+const EditExperience = (props) => {
   const [experience, setExperience] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const {id} = useParams();
 
   //getting by id
-  // useEffect(() => {
-  //   axios.get(`/experience/${props.match.params.id}`)
-  //     .then(res => {setExperience(res.data.experience)})
-  //     .catch(err => console.log(err))
-  // }, [])
+  useEffect(() => {
+    axios.get(`/experience/${id}`)
+      .then(res => {
+        setExperience(res.data)
+      }).catch(err => console.log(err))
+  }, [id])
 
   //update
   const updateExperience = e => {

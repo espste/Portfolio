@@ -1,6 +1,6 @@
 import './edit.css';
 import mongoose from 'mongoose';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useParams } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 
@@ -11,15 +11,16 @@ const EditEducation = (props) => {
   // const [year, setYear] = useState('');
   // const [school, setSchool] = useState('');
   const navigate = useNavigate();
+  const {id} = useParams();
   
 
   //getting by id
   useEffect(() => {
 
-    axios.get(`/education/${props.params.id}`)
+    axios.get(`/education/${id}`)
       .then(res => {setEducation(res.data.education)}) 
       .catch(err => console.log(err))
-  }, [props.params.id])
+  }, [id])
 
 
   const updateEducation = e => {
@@ -27,7 +28,7 @@ const EditEducation = (props) => {
 
     const postEducation = {education};
 
-    axios.put(`/education/update/${props.match.params.id}`, postEducation)
+    axios.put(`/education/update/${id}`, postEducation)
       .then(res => {
         setMessage(res.data.msg);
     

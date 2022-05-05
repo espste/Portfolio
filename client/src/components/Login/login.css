@@ -1,8 +1,8 @@
 .login
 {
-    background: var(--clr-white);
+    background: #caf0f8;
     padding: var(--pd-xl);
-    min-height: 75vh;
+    min-height: 100vh;
     margin: 0 auto;
     position: relative;
 }
@@ -33,7 +33,7 @@
 
 .login-center form p
 {
-    color: var(--clr-form-p);
+    color: var(--clr-dark);
     text-align: center;
     letter-spacing: var(--ls-xs);
     margin-bottom: var(--mg-s);

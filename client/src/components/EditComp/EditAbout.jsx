@@ -1,6 +1,6 @@
 import './edit.css';
 import { Link, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useParams } from 'react';
 import axios from 'axios';
 
 
@@ -8,15 +8,16 @@ const EditAbout = (props) => {
   const [about, setAbout] = useState('');
   const [message, setMessage] = useState('');
   const navigate = useNavigate();
+  const {id} = useParams();
 
   //getting by id
   useEffect(() => {
     
-    axios.get(`/about/${props.match.params.id}`)
+    axios.get(`/about/${id}`)
       .then(res => {
         setAbout(res.data.about)
       }).catch(err => console.log(err))
-  },[]);/* eslint-disable-line */
+  },[id]);
 
   //updating about
   const updateAbout = (e) => {
@@ -24,7 +25,7 @@ const EditAbout = (props) => {
     
     const updateAbout = {about};
 
-    axios.put(`/about/update/${props.match.params.id}`, updateAbout)
+    axios.put(`/about/update/${id}`, updateAbout)
       .then(res => {
         setMessage(res.data.msg);
       }).catch(err => console.log(err))

@@ -295,3 +295,8 @@ form button:hover
     text-align: center;
     border-radius: 50%;
 }
+
+.single-experience p
+{
+    color: var(--clr-primary-text);
+}
