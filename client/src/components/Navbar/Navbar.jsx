@@ -48,7 +48,7 @@ const Navbar = () => {
             <li><Link to="/" onClick={()=>scrollToElement('Projects')}>Projects</Link></li>
             <li><Link to="/" onClick={()=>scrollToElement('Experience')}>Experience</Link></li>
             <li><Link to="/" onClick={()=>scrollToElement('Contact')}>Contact</Link></li>
-            <li><Link to="/admin" className="admin">Admin</Link></li>
+            {/* <li><Link to="/admin" className="admin">Admin</Link></li> */}
             <li><Link to="/login">Login</Link></li>
           </ul>
         </div>

@@ -9,13 +9,50 @@ export const DataProvider = ({ children }) => {
     const [education, setEducation] = useState([]);
     const [experience, setExperience] = useState([]);
     const [projects, setProjects] = useState([]);
+    const [isLogin, setIsLogin] = useState(false);
+    const [loginFin, setLoginFin] = useState(true);
+    const [dataFin, setDataFin] = useState(true);
 
     const state = {
         about: [about, setAbout],
         education: [education, setEducation],
         experience: [experience, setExperience],
-        projects: [projects, setProjects]
+        projects: [projects, setProjects],
+        isLogin: [isLogin, setIsLogin]
     };
+
+    //checking login token
+    const checkLogin = async () => {
+        const token = localStorage.getItem('tokenStore');
+        if(token) {
+            const verified = await axios.get(`/user/verify`, {
+                headers: {
+                    Authorization: token
+                }
+            });
+            console.log(verified);
+
+            setIsLogin(verified.data);
+            if(verified.data === false) {
+                return localStorage.clear();
+            }
+        } else {
+            setIsLogin(false);
+        }
+    };
+
+    useEffect(() => {
+        try {
+            
+            if(loginFin) {
+                checkLogin();
+            }
+            return setLoginFin(false);
+
+        } catch (error) {
+            console.log(error);
+        }
+    }, [loginFin])
 
     //fetching data from routes
     const fetchData = async () => {
@@ -44,11 +81,17 @@ export const DataProvider = ({ children }) => {
 
     useEffect(() => {
         try {
-            fetchData();
+
+            if(dataFin) {
+                fetchData();
+            }
+            
+            return setDataFin(false);
+
         } catch (err) {
             console.log(err);            
         }
-    }, []);
+    }, [dataFin]);
 
     return (
         <DataContext.Provider value={state}>

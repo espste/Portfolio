@@ -1,6 +1,6 @@
 .login
 {
-    background: #caf0f8;
+    /* background: #caf0f8; */
     padding: var(--pd-xl);
     min-height: 100vh;
     margin: 0 auto;
@@ -33,7 +33,8 @@
 
 .login-center form p
 {
-    color: var(--clr-dark);
+    color: crimson;
+    font-weight: var(fw-bold);
     text-align: center;
     letter-spacing: var(--ls-xs);
     margin-bottom: var(--mg-s);
