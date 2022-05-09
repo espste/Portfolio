@@ -6,12 +6,14 @@
     border-bottom: 1px dashed rgb(9, 93, 119);
     margin: 0 auto;
     margin-bottom: var(--mg-l);
+    text-indent: 1vw;
+    /* margin-left: 1vw; */
 }
 
 .about
 {    
 margin-bottom: var(--mg-l);
-color: var(--clr-greyish);
+background-color: var(--clr-bg);
 }
 
 .about-center
@@ -22,6 +24,7 @@ color: var(--clr-greyish);
 .about-info p   
 {
 font-size: var(--fz-p);
-color: var(--clr-primary-text);
+color: black;
 line-height: 1.5;
+margin-left: 1vw;
 }

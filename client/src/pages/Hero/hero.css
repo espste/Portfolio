@@ -59,14 +59,14 @@
 {
     font-size: var(--fz-regular);
     text-transform: capitalize;
-    color: var(--clr-primary-text);
+    color: black;
     letter-spacing: var(--ls-xs);
     font-style: var(--fs-italic);
 }
 
 .cv span .fa-file-pdf
 {
-    color: #fff;
+    color: var(--clr-bg);
     font-size: var(--fz-regular);
     background-color: var(--clr-button-delete);
     border-radius: var(--br-l);
@@ -75,16 +75,17 @@
 
 .cv:hover .fa-file-pdf
 {
-    transform: scale(1.2);
+    transform: scale(1.5);
 }
 
 .personalInfo
 {
     position: relative;
-    box-shadow: 1px 1px 4px 3px rgba(197, 196, 197, .497);    
+    background-color: var(--clr-bg);
+    box-shadow: 1px 1px 4px 3px rgba(11, 11, 11, 0.497);    
     max-width: 550px;
     height: 300px;
-    margin: 0 auto;
+    margin: 5vh auto;
     top: 50%;
     padding: var(--pd-s);
     display: flex;

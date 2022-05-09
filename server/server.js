@@ -52,7 +52,7 @@ app.use('/', projectRoute);
 app.use('/', experienceRoute);
 app.use('/', educationRoute);
 app.use('/', aboutRoute);
-app.use('/', upload);
+app.use('/api/upload', upload);
 
 //static assets
 if(process.env.NODE_ENV === 'production') {

@@ -1,12 +1,7 @@
 import express from "express";
 import cloudinary from 'cloudinary';
-import fs from 'fs';
-
-//////////      //////////
-//                      //
-// NOT WORKING PROPERLY //
-//                      //
-//////////      //////////
+import dotenv from 'dotenv';
+dotenv.config();
 
 const Router = express.Router();
 
@@ -19,45 +14,60 @@ cloudinary.config({
 });
 
 //upload image
-Router.post('/upload', (req, res)=>{
+
+Router.post('/api/upload', async (req, res) => {
     try {
-        console.log(req.files);
-
-        if(!req.files || Object.keys(req.files).length===0) {
-            return res.status(400).send({Message: 'Add file to upload..'});
-        }
-       
-        const file = req.files.file;
-        if(file.size > 1024*1024) {
-            removeTmp(file.tempFilePath);
-            return res.status(400).json({Message:"File size is too large"});
-        };
-  
-        if(file.mimetype !=='image/jpeg' && file.mimetype !== 'image/png'){
-            removeTmp(file.tempFilePath);
-            return res.status(400).json({Message:"File format is incorrect"});
-        };
-
-        cloudinary.v2.uploader.upload(
-            file.tempFilePath, 
-            {folder:"portfolio" }, 
-            async (err, res)=>{
-                console.log('Cloudinary Error: ', err);
-                console.log('Cloudinary Result: ', rs);
-
-                if(err) throw err;
-            
-                removeTmp(file.tempFilePath);
-                res.json({
-                    public_id: res.public_id, 
-                    url: res.secure_url
-                });
-            }
-        );
+        const fileStr = req.body.data;
+        const uploadResponse = await cloudinary.uploader.upload(fileStr, {
+            upload_preset: 'yuxlp3ad',
+        });
+        console.log(uploadResponse);
+        res.json({ msg: 'Uploaded..'})
     } catch (err) {
-      res.status(500).json({Message: err.message});  
+        console.error(err);
+        res.status(500).json({ err: 'Something went wrong!'})
     }
-});
+})
+
+// Router.post('/upload', (req, res)=>{
+//     try {
+//         console.log(req.files);
+
+//         if(!req.files || Object.keys(req.files).length===0) {
+//             return res.status(400).send({Message: 'Add file to upload..'});
+//         }
+       
+//         const file = req.files.file;
+//         if(file.size > 1024*1024) {
+//             removeTmp(file.tempFilePath);
+//             return res.status(400).json({Message:"File size is too large"});
+//         };
+  
+//         if(file.mimetype !=='image/jpeg' && file.mimetype !== 'image/png'){
+//             removeTmp(file.tempFilePath);
+//             return res.status(400).json({Message:"File format is incorrect"});
+//         };
+
+//         cloudinary.v2.uploader.upload(
+//             file.tempFilePath, 
+//             {folder:"portfolio" }, 
+//             async (err, res)=>{
+//                 console.log('Cloudinary Error: ', err);
+//                 console.log('Cloudinary Result: ', rs);
+
+//                 if(err) throw err;
+            
+//                 removeTmp(file.tempFilePath);
+//                 res.json({
+//                     public_id: res.public_id, 
+//                     url: res.secure_url
+//                 });
+//             }
+//         );
+//     } catch (err) {
+//       res.status(500).json({Message: err.message});  
+//     }
+// });
 
 //delete image
 Router.post('/destroy', (req, res) => {

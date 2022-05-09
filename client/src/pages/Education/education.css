@@ -1,6 +1,7 @@
 .education
 {
     margin: var(--mg-l) 0;
+    background-color: var(--clr-edu-bg);
 }
 
 .education-center

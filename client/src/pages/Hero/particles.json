@@ -1,7 +1,7 @@
 {
   "background": {
     "color": {
-      "value": "#232323"
+      "value": "#fff"
     }
   },
   "fullScreen": {
@@ -25,7 +25,7 @@
         "distance": 200,
         "duration": 2,
         "opacity": 0.8,
-        "size": 40
+        "size": 100
       },
       "push": {
         "quantity": 4
@@ -38,10 +38,10 @@
   },
   "particles": {
     "color": {
-      "value": "#ffffff"
+      "value": "#232323"
     },
     "links": {
-      "color": "#ffffff",
+      "color": "#232323",
       "distance": 150,
       "enable": true,
       "opacity": 0.5,

@@ -18,40 +18,88 @@ const ProjectsAdmin = () => {
   const [message, setMessage] = useState('');
   const [messageCondition, setMessageCondition] = useState(false);
 
+  const [fileInputState, setFileInputState] = useState('');
+  const [selectedFile, setSelectedFile] = useState('');
+  const [previewSource, setPreviewSource] = useState();
 
-  //upload image
-  const handleImageUpload = async e => {
-    e.preventDefault();
-    try {
-      const file = e.target.files[0];
+  const handleFileInputChange = e => {
+    const file = e.target.files[0];
+    previewFile(file);
+    setSelectedFile(file);
+    setFileInputState(e.target.value);
+  };
 
-      if (!file) return alert('No files exist')
-      if (file.size > 1024*1024) return alert('Size is too big..')
-      if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
-        return alert('Incorrect file format..')
-      }
-
-      let formData = new FormData();
-      formData.append('file', file);
-      formData.append('upload_preset', 'yuxlp3ad');
-
-      //post
-      const result = await axios.post('https://api.cloudinary.com/v1_1/kryyp/image/upload', formData, {
-        headers: {
-          'content-type': 'multipart/form-data',
-          'Access-Control-Allow-Credentials': true,
-          'Access-Control-Allow-Origin': 'http://localhost:1337',
-          'Access-Control-Allow-Methods': 'GET, POST, PUT, DEL',
-          'Access-Control-Allow-Headers': 'Authorization'
-        }
-      });
-
-      setImages(result.data);
-
-    } catch (err) {
-      console.log(err.response.data.msg);
+  const previewFile = file => {
+    const reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onloadend = () =>{
+      setPreviewSource(reader.result);
     }
   };
+
+  const handleSubmitFile = e => {
+    e.preventDefault();
+    if(!selectedFile) return;
+    const reader = new FileReader();
+    reader.readAsDataURL(selectedFile);
+    reader.onloadend = () => {
+      uploadImage(reader.result);
+    };
+    reader.onerror = () => {
+      console.error('AAAH!');
+      alert('Something went wrong!');
+    };
+  };
+  
+  const uploadImage = async (base64EncodedImage) => {
+    try {
+      await axios('/api/upload', {
+        method: 'POST',
+        body: JSON.stringify({ data: base64EncodedImage }),
+        headers: { 'Content-Type': 'application/json' },
+      });
+      setFileInputState('');
+      setPreviewSource('');
+      alert('Image uploaded successfully');
+    } catch (err) {
+      console.error(err);
+      alert('Something went wrong!');
+    }
+  };
+
+  //upload image
+  // const handleImageUpload = async e => {
+  //   e.preventDefault();
+  //   try {
+  //     const file = e.target.files[0];
+
+  //     if (!file) return alert('No files exist')
+  //     if (file.size > 1024*1024) return alert('Size is too big..')
+  //     if (file.type !== 'image/jpeg' && file.type !== 'image/png') {
+  //       return alert('Incorrect file format..')
+  //     }
+
+  //     let formData = new FormData();
+  //     formData.append('file', file);
+  //     formData.append('upload_preset', 'yuxlp3ad');
+
+  //     //post
+  //     const result = await axios.post('https://api.cloudinary.com/v1_1/kryyp/image/upload', formData, {
+  //       headers: {
+  //         'content-type': 'multipart/form-data',
+  //         'Access-Control-Allow-Credentials': true,
+  //         'Access-Control-Allow-Origin': 'http://localhost:1337',
+  //         'Access-Control-Allow-Methods': 'GET, POST, PUT, DEL',
+  //         'Access-Control-Allow-Headers': 'Authorization'
+  //       }
+  //     });
+
+  //     setImages(result.data);
+
+  //   } catch (err) {
+  //     console.log(err.response.data.msg);
+  //   }
+  // };
 
   //delete image
   const handleImageDelete = async () => {
@@ -76,28 +124,28 @@ const ProjectsAdmin = () => {
   };
 
   //submit
-  const handleSubmit = e => {
-    e.preventDefault();
+  // const handleSubmit = e => {
+  //   e.preventDefault();
 
-    try {
+  //   try {
       
-      axios.post('/project/', {...project, images})
-        .then(res => {
-          setMessage(res.data.msg);
+  //     axios.post('/project/', {...project, images})
+  //       .then(res => {
+  //         setMessage(res.data.msg);
 
-          setTimeout(() => {
-            setMessage('');
-          }, 1000);
+  //         setTimeout(() => {
+  //           setMessage('');
+  //         }, 1000);
 
-          setProject(initialState);
-          setImages(false);
+  //         setProject(initialState);
+  //         setImages(false);
 
-        })
+  //       })
 
-    } catch (err) {
-      console.log(err.response.data.msg);
-    }
-  };
+  //   } catch (err) {
+  //     console.log(err.response.data.msg);
+  //   }
+  // };
 
   const styleUpload = {
     display: images ? 'block' : 'none' 
@@ -139,7 +187,7 @@ const ProjectsAdmin = () => {
   return (
     <div className="same-component">
       <div className="same-form">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmitFile}>
           <h4>Project Components</h4>
 
           <label htmlFor="text">Id</label>
@@ -177,16 +225,17 @@ const ProjectsAdmin = () => {
           <div className="upload">
             <input 
               type="file" 
-              name="file" 
+              name="image" 
               id="file_up"
-              onChange={handleImageUpload} 
+              value={fileInputState}
+              onChange={handleFileInputChange} 
             />
-            <div id="file_img" style={styleUpload}>
-              <img src={images ? images.url : ''} alt="" />
+            <div id="file_img">
+              <img src={previewSource} alt="" />
               <span onClick={handleImageDelete}>X</span>
             </div>
           </div>
-         <button>Add Project</button> 
+         <button type="submit">Add Project</button> 
         </form>
       </div>
       <div className="same-item">

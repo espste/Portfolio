@@ -2,6 +2,12 @@
 {
     margin-bottom: 10vh;
 }
+
+.title
+{
+    background-color: var(--clr-edu-bg);
+}
+
 .projects-center
 {
     margin-bottom: 10vh;
