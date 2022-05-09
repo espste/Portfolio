@@ -77,8 +77,6 @@ Router.post('/destroy', (req, res) => {
     }
 });
 
-
-
 //remove temp path
 const removeTmp = (path) => {
     fs.unlink(path, err => {

@@ -36,9 +36,13 @@ const ProjectsAdmin = () => {
       formData.append('upload_preset', 'yuxlp3ad');
 
       //post
-      const result = await axios.post('/upload', formData, {
+      const result = await axios.post('https://api.cloudinary.com/v1_1/kryyp/image/upload', formData, {
         headers: {
-          'content-type': 'multipart/form-data'
+          'content-type': 'multipart/form-data',
+          'Access-Control-Allow-Credentials': true,
+          'Access-Control-Allow-Origin': 'http://localhost:1337',
+          'Access-Control-Allow-Methods': 'GET, POST, PUT, DEL',
+          'Access-Control-Allow-Headers': 'Authorization'
         }
       });
 
