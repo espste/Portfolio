@@ -45,7 +45,7 @@ const Register = () => {
         <div className="main-container">
           <div className="login-center">
             <form onSubmit={handleRegisterSubmit}>
-              <p>{error}</p>
+              <p>{error ? error : 'Register'}</p>
               <label htmlFor="name">Name</label>
               <input 
                 type="name" 

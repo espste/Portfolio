@@ -40,17 +40,17 @@ Router.post('/upload', (req, res)=>{
 
         cloudinary.v2.uploader.upload(
             file.tempFilePath, 
-            {folder:"test" }, 
-            async (err, result)=>{
+            {folder:"portfolio" }, 
+            async (err, res)=>{
                 console.log('Cloudinary Error: ', err);
-                console.log('Cloudinary Result: ', result);
+                console.log('Cloudinary Result: ', rs);
 
                 if(err) throw err;
             
                 removeTmp(file.tempFilePath);
                 res.json({
-                    public_id: result.public_id, 
-                    url: result.secure_url
+                    public_id: res.public_id, 
+                    url: res.secure_url
                 });
             }
         );

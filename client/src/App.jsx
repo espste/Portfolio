@@ -1,11 +1,12 @@
 import './App.css';
+import { useContext } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { Element } from 'react-scroll';
 // Components
 import Navbar from './components/Navbar/Navbar';
 import Footer from './components/Footer/Footer';
-// import Register from './components/Register/Register';
 import Login from './components/Login/Login';
+import { DataContext } from './components/Context/GlobalContext';
 // Pages
 import Hero from './pages/Hero/Hero';
 import About from './pages/About/About';
@@ -13,7 +14,7 @@ import Contact from './pages/Contact/Contact';
 import Education from './pages/Education/Education';
 import Experience from './pages/Experience/Experience';
 import Projects from './pages/Projects/Projects';
-// Admin Components
+// Admin Component
 import Admin from './components/AdminComp/Admin';
 // Edit Components
 import EditAbout from './components/EditComp/EditAbout'
@@ -21,7 +22,10 @@ import EditEducation from './components/EditComp/EditEducation'
 import EditExperience from './components/EditComp/EditExperience'
 import EditProjects from './components/EditComp/EditProjects'
 
-const App = (props) => {
+const App = () => {
+  const state = useContext(DataContext);
+  const [isLogin] = state.isLogin;
+
 
   return (
     <div className="App">
@@ -59,10 +63,10 @@ const App = (props) => {
       </Element>
       {/* ADMIN & LOGIN */}
       <Routes>
-          <Route exact path="/admin" element={<Admin />}/> 
+          <Route exact path="/admin" element={isLogin ? <Admin /> : <Login />}/> 
       </Routes>
       <Routes>
-          <Route exact path="login" element={<Login />}/> 
+          <Route exact path="login" element={isLogin ? <Admin /> : <Login />}/> 
       </Routes>
       {/* EDIT ROUTES */}
       <Routes>

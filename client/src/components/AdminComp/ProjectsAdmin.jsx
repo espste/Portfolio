@@ -33,10 +33,13 @@ const ProjectsAdmin = () => {
 
       let formData = new FormData();
       formData.append('file', file);
+      formData.append('upload_preset', 'yuxlp3ad');
 
       //post
       const result = await axios.post('/upload', formData, {
-        headers: {'content-type': 'multipart/form-data'}
+        headers: {
+          'content-type': 'multipart/form-data'
+        }
       });
 
       setImages(result.data);
@@ -194,7 +197,7 @@ const ProjectsAdmin = () => {
 
               <div className="single-project">
                 <div className="single-project-img">
-                  <img src={item.images.url} alt="" />
+                  <img src={item.url} alt="" />
                 </div>
                 <div className="single-project-info">
                   <h3>{item.title}</h3>

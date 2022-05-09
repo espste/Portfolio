@@ -4,7 +4,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { DataContext } from '../Context/GlobalContext';
 import axios from 'axios';
 
-import Register from '../Register/Register';
+// import Register from '../Register/Register';
 
 
 const Login = () => {
@@ -14,8 +14,6 @@ const Login = () => {
   const [user, setUser] = useState({email: '', password: ''});
   const [isLogin, setIsLogin] = state.isLogin;
   const [error, setError] = useState('');
-  
-  
 
   const handleInputChange = e => {
     const {name, value} = e.target;
@@ -60,7 +58,7 @@ const Login = () => {
         <div className="main-container">
           <div className="login-center">
             <form onSubmit={handleLoginSubmit}>
-              <p>{error}</p>
+              <p>{error ? error : 'Login'}</p>
               <label htmlFor="email">Email</label>
               <input 
                 type="email" 
@@ -87,7 +85,7 @@ const Login = () => {
           </div>
         </div>
       </div>
-      <Register />
+      {/* <Register /> */}
     </>
   )
 }

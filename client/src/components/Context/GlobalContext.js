@@ -30,7 +30,7 @@ export const DataProvider = ({ children }) => {
                     Authorization: token
                 }
             });
-            console.log(verified);
+            // console.log(verified);
 
             setIsLogin(verified.data);
             if(verified.data === false) {
